@@ -1,0 +1,19 @@
+{
+  "name": "redditmebackend",
+  "version": "1.0.0",
+  "description": "Backend of redditMe - A self practice project to mimic reddit",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yuhao3570/redditMeBackend.git"
+  },
+  "author": "Hao",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yuhao3570/redditMeBackend/issues"
+  },
+  "homepage": "https://github.com/yuhao3570/redditMeBackend#readme"
+}
