@@ -1,5 +1,6 @@
 const route = require('express').Router();
 const promisedQuery = require('../helperFunctions/execQuery');
+const changeVotes = require('../helperFunctions/changeVotes');
 
 route.get('/', async (req, res) => {
   let sqlString = `SELECT * FROM comments WHERE post_id=?`;
@@ -21,6 +22,14 @@ route.post('/', async (req, res) => {
   } catch (error) {
     console.log(error);
     res.status(500).send(error);
+  }
+})
+
+route.put('/:commentId/:vote', async (req, res) => {
+  try {
+    await changeVotes(req.params.commentId, 'comment', req.params.vote, res, 'comments')
+  } catch (error) {
+    console.log(error);
   }
 })
 

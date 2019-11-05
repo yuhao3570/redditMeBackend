@@ -1,5 +1,6 @@
 const route = require('express').Router();
 const promisedQuery = require('../helperFunctions/execQuery');
+const changeVotes = require('../helperFunctions/changeVotes');
 
 route.get('/', async (req, res) => {
   try {
@@ -46,6 +47,14 @@ route.delete('/:postId', async (req, res) => {
     res.json(data);
   } catch (error) {
     res.status(500).send(error);
+  }
+})
+
+route.put('/:postId/:vote', async (req, res) => {
+  try {
+    await changeVotes(req.params.postId, 'post', req.params.vote, res, 'posts');
+  } catch (error) {
+    console.log(error);
   }
 })
 
