@@ -47,9 +47,9 @@ insert into users values
 (7, 'test_7', 'test_2@epam.com', '*****');
 
 insert into posts values
-(1, 1, 'post 1', 100, 'https://exploringjs.com/impatient-js/toc.html', 0),
-(2, 1, 'post 2', 100, 'https://exploringjs.com/impatient-js/toc.html', 0),
-(3, 1, 'post 3', 100, 'https://exploringjs.com/impatient-js/toc.html', 0),
+(1, 2, 'post 1', 100, 'https://exploringjs.com/impatient-js/toc.html', 0),
+(2, 2, 'post 2', 100, 'https://exploringjs.com/impatient-js/toc.html', 0),
+(3, 2, 'post 3', 100, 'https://exploringjs.com/impatient-js/toc.html', 0),
 (4, 3, 'post 4', 100, 'https://exploringjs.com/impatient-js/toc.html', 0),
 (5, 4, 'post 5', 100, 'https://exploringjs.com/impatient-js/toc.html', 0),
 (6, 2, 'post 6', 100, 'https://exploringjs.com/impatient-js/toc.html', 0),
@@ -62,9 +62,8 @@ insert into posts values
 (13, 4, 'post 13', 100, 'https://exploringjs.com/impatient-js/toc.html', 0),
 (14, 2, 'post 14', 100, 'https://exploringjs.com/impatient-js/toc.html', 0),
 (15, 5, 'post 15', 100, 'https://exploringjs.com/impatient-js/toc.html', 0),
-(16, 7, 'post 16', 100, 'https://exploringjs.com/impatient-js/toc.html', 0),
-(17, 7, 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. ', 100, 'https://exploringjs.com/impatient-js/toc.html', 0)
-;
+(16, 7, 'post 16', 100, 'https://exploringjs.com/impatient-js/toc.html', 0);
+
 INSERT INTO posts(owner_id, title, timeUpdated, url) values
 (7, 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. ', 100, 'https://exploringjs.com/impatient-js/toc.html')
 ;
