@@ -17,9 +17,6 @@ app.use('/posts/:postId/comments', (req, res, next) => {
   next();
 }, require('./routes/comments'));
 
-
-
-
 app.listen(PORT, () =>{
   console.log('listening at port: ', PORT);
 })
