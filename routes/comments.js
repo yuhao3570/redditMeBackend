@@ -18,7 +18,9 @@ route.post('/', async (req, res) => {
   const {content, owner_id} = req.body;
   try{
     let data = await promisedQuery(sqlString, [content, owner_id, req.postId]);
-    res.json(data);
+
+    const inserted = await promisedQuery(`SELECT * FROM comments WHERE comment_id=?`, [data.insertId]);
+    res.json(inserted[0]);
   } catch (error) {
     console.log(error);
     res.status(500).send(error);

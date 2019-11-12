@@ -1,69 +1,85 @@
 CREATE DATABASE IF NOT EXISTS reddit;
-
 USE reddit;
 
 CREATE TABLE IF NOT EXISTS users (
-	user_id INT PRIMARY KEY AUTO_INCREMENT,
-    email VARCHAR(225),
-    user_name VARCHAR(225) NOT NULL,
-    pw VARCHAR(20) NOT NULL
+	userName VARCHAR(225) PRIMARY KEY,
+  email VARCHAR(225),
+  pw VARCHAR(20) NOT NULL
 );
-
-CREATE TABLE IF NOT EXISTS posts(
-	post_id INT PRIMARY KEY AUTO_INCREMENT,
-    owner_id INT,
-    title text NOT NULL,
-    timeUpdated int NOT NULL,
-    url VARCHAR(225) NOT NULL,
-    score INT DEFAULT 0,
-    FOREIGN KEY (owner_id)
-      REFERENCES users(user_id)
-);
-
-CREATE TABLE IF NOT EXISTS comments(
-	comment_id INT PRIMARY KEY AUTO_INCREMENT,
-    content text NOT NULL,
-    owner_id INT,
-    post_id INT,
-    score INT DEFAULT 0,
-    FOREIGN KEY (owner_id) 
-    REFERENCES users(user_id)
-        ON UPDATE CASCADE
-        ON DELETE CASCADE,
-    FOREIGN KEY (post_id) 
-    REFERENCES posts(post_id)
-        ON UPDATE CASCADE
-        ON DELETE CASCADE
-);
-
-show tables;
 
 insert into users values 
-(2, 'test_2', 'test_2@epam.com', '*****'),
-(3, 'test_3', 'test_2@epam.com', '*****'),
-(4, 'test_4', 'test_2@epam.com', '*****'),
-(5, 'test_5', 'test_2@epam.com', '*****'),
-(6, 'test_6', 'test_2@epam.com', '*****'),
-(7, 'test_7', 'test_2@epam.com', '*****');
+('Hao', 'Hao@epam.com', '123'),
+('Adam', 'Adam@epam.com', '123'),
+('Martin', 'Martin@epam.com', '123'),
+('Jeff', 'Jeff@epam.com', '123'),
+('Cola', 'Cola@epam.com', '123'),
+('Garrin', 'Garrin@epam.com', '123'),
+('Jun', 'Jun@epam.com', '123'),
+('Honda', 'Honda@epam.com', '123'),
+('Mate', 'Mate@epam.com', '123'),
+('Ben', 'Ben@epam.com', '123'),
+('Cathy', 'Cathy@epam.com', '123'),
+('Yuan', 'Yuan@epam.com', '123'),
+('Arthur', 'Arthur@epam.com', '123'),
+('Earvin', 'Earvin@epam.com', '123');
 
-insert into posts values
-(1, 2, 'post 1', 100, 'https://exploringjs.com/impatient-js/toc.html', 0),
-(2, 2, 'post 2', 100, 'https://exploringjs.com/impatient-js/toc.html', 0),
-(3, 2, 'post 3', 100, 'https://exploringjs.com/impatient-js/toc.html', 0),
-(4, 3, 'post 4', 100, 'https://exploringjs.com/impatient-js/toc.html', 0),
-(5, 4, 'post 5', 100, 'https://exploringjs.com/impatient-js/toc.html', 0),
-(6, 2, 'post 6', 100, 'https://exploringjs.com/impatient-js/toc.html', 0),
-(7, 5, 'post 7', 100, 'https://exploringjs.com/impatient-js/toc.html', 0),
-(8, 7, 'post 8', 100, 'https://exploringjs.com/impatient-js/toc.html', 0),
-(9, 6, 'post 9', 100, 'https://exploringjs.com/impatient-js/toc.html', 0),
-(10, 6, 'post 10', 100, 'https://exploringjs.com/impatient-js/toc.html', 0),
-(11, 5, 'post 11', 100, 'https://exploringjs.com/impatient-js/toc.html', 0),
-(12, 3, 'post 12', 100, 'https://exploringjs.com/impatient-js/toc.html', 0),
-(13, 4, 'post 13', 100, 'https://exploringjs.com/impatient-js/toc.html', 0),
-(14, 2, 'post 14', 100, 'https://exploringjs.com/impatient-js/toc.html', 0),
-(15, 5, 'post 15', 100, 'https://exploringjs.com/impatient-js/toc.html', 0),
-(16, 7, 'post 16', 100, 'https://exploringjs.com/impatient-js/toc.html', 0);
+CREATE TABLE IF NOT EXISTS posts(
+	postId INT PRIMARY KEY AUTO_INCREMENT,
+  ownerName VARCHAR(225) NOT NULL,
+  title text NOT NULL,
+  created int NOT NULL,
+  lastUpdated int NOT NULL,
+  postUrl VARCHAR(225) NOT NULL,
+  score INT DEFAULT 0,
+  FOREIGN KEY (ownerName)
+	REFERENCES users(userName)
+		ON UPDATE CASCADE
+    ON DELETE CASCADE
+);
 
-INSERT INTO posts(owner_id, title, timeUpdated, url) values
-(7, 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. ', 100, 'https://exploringjs.com/impatient-js/toc.html')
-;
+INSERT INTO posts(ownerName, title, created, lastUpdated, postUrl) 
+VALUES
+('Hao', 'Hi I am Hao', 100000, 100000, 'https://google.com/'),
+('Adam', 'Hi I am Adam', 100000, 100000, 'https://google.com/'),
+('Martin', 'Hi I am Martin', 100000, 100000, 'https://google.com/'),
+('Jeff', 'Hi I am Jeff', 100000, 100000, 'https://google.com/'),
+('Cola', 'Hi I am Cola', 100000, 100000, 'https://google.com/'),
+('Garrin', 'Hi I am Garrin', 100000, 100000, 'https://google.com/'),
+('Jun', 'Hi I am Jun', 100000, 100000, 'https://google.com/'),
+('Honda', 'Hi I am Honda', 100000, 100000, 'https://google.com/'),
+('Mate', 'Hi I am Mate', 100000, 100000, 'https://google.com/'),
+('Ben', 'Hi I am Ben', 100000, 100000, 'https://google.com/'),
+('Cathy', 'Hi I am Cathy', 100000, 100000, 'https://google.com/'),
+('Arthur', 'Hi I am Arthur', 100000, 100000, 'https://google.com/'),
+('Yuan', 'Hi I am Yuan', 100000, 100000, 'https://google.com/'),
+('Earvin', 'Hi I am Earvin', 100000, 100000, 'https://google.com/');
+
+CREATE TABLE IF NOT EXISTS comments(
+	commentId INT PRIMARY KEY AUTO_INCREMENT,
+  content text NOT NULL,
+  ownerName VARCHAR(225) NOT NULL,
+  postId INT,
+  score INT DEFAULT 0,
+  FOREIGN KEY (ownerName) 
+  REFERENCES users(userName)
+    ON UPDATE CASCADE
+    ON DELETE CASCADE,
+  FOREIGN KEY (postId) 
+  REFERENCES posts(postId)
+    ON UPDATE CASCADE
+    ON DELETE CASCADE
+);
+
+INSERT INTO comments(content, ownerName, postId)
+values 
+('comment 1', "Hao", 10),
+('comment 2', "Cola", 12),
+('comment 3', "Jeff", 14),
+('comment 4', "Adam", 14),
+('comment 5', "Ben", 14),
+('comment 6', "Jeff", 14),
+('comment 7', "Martin", 14),
+('comment 8', "Hao", 14),
+('comment 9', "Hao", 14);
+
+SHOW TABLES;
